@@ -99,6 +99,10 @@
             background-color: colors.$button-focus;
         }
     }
+
+    &__form {
+        position: relative;
+    }
     
     &__content {
         display: flex;
@@ -270,14 +274,7 @@
         left: 18vw;
     }
 }
-// const posters = C(main, 'section', 'posters');
-    
-// for (let i = 0; i < titles.length; ++i) {
-//     let posterContainer = C(posters, 'div', 'posters__poster-container');
-//     C(posterContainer, 'img', 'posters__poster', '', {
-//         src: titles[i].Poster
-//     })
-// }     
+
 .posters {
     display: flex;
     justify-content: space-between;
@@ -296,11 +293,12 @@
     &__plot {
         font-size: 1.25rem;
     }
-    &__actors {
+    &__label {
         margin: 1rem 1.5rem 0 1.5rem;
+        font-weight: 700;
     }
-    &__year {
-        margin: 1rem 1.5rem 0 1.5rem;
+    &__value {
+        margin: .15rem 1.5rem 0 2.5rem;
     }
     &__box-office{
         margin: 1rem 1.5rem 0 1.5rem;
@@ -309,23 +307,8 @@
         margin: 1rem 1.5rem 0 1.5rem;
     }
     &__poster {
-        // position: absolute;
-        // top: 0px;
-        // left: 0;
         height: 100%;
         width: 100%;
-
-        // perspective: 3000px;
-        // transform-style: preserve-3d;
-        // z-index: 2;
-        // transition: all .4s;
-
-        // &--slide {
-        //     transform-origin: top left;
-        //     transform: rotateX(70deg) rotateZ(-60deg) translate3d(-120px, 0px, 70px);
-        //     box-shadow: -80px 60px 15px 5px rgba(0,0,0,0.4);
-        //     transform-style: preserve-3d;
-        // }
     }
 }
 .posters__poster-container {

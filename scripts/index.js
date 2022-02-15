@@ -3,7 +3,7 @@ e8542494
 27d27563
 "12855f1e"
 */
-const apiKey = '27d27563';
+const apiKey = 'e8542494';
 let currentPosterHover = null;
 let posterThings;
 let movies = {};
@@ -15,7 +15,7 @@ let genreId = 0;
 let genreSelected = 'Horror';
 let titlesString = localStorage.getItem('titles');
 titles = JSON.parse(titlesString);
-let titlesPerPage = 5;
+let titlesPerPage = 15;
 let searchResults = [];
 let posterNum = 0;
 
@@ -264,7 +264,7 @@ function getMovieListByTitle (search) {
             const headerError = Q('.header__error');
             console.log (headerError);
             headerError.classList.add('header__error--fade-in');
-            setInterval(turnOffError, 5000);
+            setTimeout(turnOffError, 5000);
             return;
         }
         title = searchResults.pop().Title;
@@ -363,6 +363,8 @@ function showPosters() {
     posters.innerHTML = '';
 
     for (let i = 0; i < titles.length; ++i) {
+        if (titles[i].Poster === "N/A") continue;
+        
         if (titles[i].Title === undefined) continue;
         //.flip-card
         let posterContainer = C(posters, 'div', 'posters__poster-container');
@@ -380,28 +382,19 @@ function showPosters() {
         //.flip-card-back
         const posterCardBack = C(posterCardInner, 'div', 'posters__card-back');
         const plot = C(posterCardBack, 'p', 'posters__plot', titles[i].Plot)
-        const actors = C(posterCardBack, 'p', 'posters__actors');
-        actors.innerHTML = `<b>Actors: </b><br>${titles[i].Actors}`;
+        const actors = C(posterCardBack, 'p', 'posters__label', 'Actors:');
+        C(posterCardBack, 'p', 'posters__value', titles[i].Actors);
 
-        const year = C(posterCardBack, 'p', 'posters__year');
-        year.innerHTML = "<b>Year:</b><br>" + titles[i].Year;
+        const year = C(posterCardBack, 'p', 'posters__label', 'Year:');
+        C(posterCardBack, 'p', 'posters__value', titles[i].Year);
         if (titles[i].BoxOffice !== "N/A") {
-            const boxOffice = C (posterCardBack, 'p', 'posters__box-office');
-            boxOffice.innerHTML = "<b>Revenue:</b><br>" + titles[i].BoxOffice
+            const boxOffice = C (posterCardBack, 'p', 'posters__label', 'Box Office:');
+            C (posterCardBack, 'p', 'posters__value', titles[i].BoxOffice);
         }
-        const rating = C(posterCardBack, 'p', 'posters__rating');
-        rating.innerHTML = "<b>Score:</b><br>" + titles[i].imdbRating;
+        const rating = C(posterCardBack, 'p', 'posters__label', "Rating:");
+        C(posterCardBack, 'p', 'posters__value', titles[i].imdbRating);
         console.log (titles[i]);
     }     
-
-    // posterThings = document.querySelectorAll(".posters__poster");
-    // console.log (posterThings);
-    // for (let i = 0; i < posterThings.length; ++i) {
-    //     posterThings[i].addEventListener('mouseover', slideThePoster);
-    // }
-    // posterThings = document.querySelector(".posters");
-    // posterThings.addEventListener("mouseleave", returnThePoster);
-
 }
 
 

@@ -112,6 +112,9 @@ h1, h2, h3, h4, h5, h6 {
 .header__submit-btn:active {
   background-color: #777;
 }
+.header__form {
+  position: relative;
+}
 .header__content {
   display: flex;
   flex-direction: column;
@@ -278,11 +281,12 @@ h1, h2, h3, h4, h5, h6 {
 .posters__plot {
   font-size: 1.25rem;
 }
-.posters__actors {
+.posters__label {
   margin: 1rem 1.5rem 0 1.5rem;
+  font-weight: 700;
 }
-.posters__year {
-  margin: 1rem 1.5rem 0 1.5rem;
+.posters__value {
+  margin: 0.15rem 1.5rem 0 2.5rem;
 }
 .posters__box-office {
   margin: 1rem 1.5rem 0 1.5rem;
