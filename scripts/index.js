@@ -364,30 +364,43 @@ function showPosters() {
 
     for (let i = 0; i < titles.length; ++i) {
         if (titles[i].Title === undefined) continue;
+        //.flip-card
         let posterContainer = C(posters, 'div', 'posters__poster-container');
-        const plot = C(posterContainer, 'p', 'posters__plot', titles[i].Plot)
-        const year = C(posterContainer, 'p', 'posters__year');
-        year.innerHTML = "<b>Year:</b> " + titles[i].Year;
-        if (titles[i].BoxOffice !== "N/A") {
-            const boxOffice = C (posterContainer, 'p', 'posters__box-office');
-            boxOffice.innerHTML = "<b>Revenue:</b> " + titles[i].BoxOffice
-        }
-        const rating = C(posterContainer, 'p', 'posters__rating');
-        rating.innerHTML = "<b>Score:</b> " + titles[i].imdbRating;
-        console.log (titles[i]);
-        C(posterContainer, 'img', 'posters__poster', '', {
+        
+        //.flip-card-inner
+        const posterCardInner = C(posterContainer, 'div', 'posters__card-inner');
+        
+        //.flip-card-front
+        const posterCardFront = C(posterCardInner, 'div', 'posters__card-front')
+        C(posterCardFront, 'img', 'posters__poster', '', {
             src: titles[i].Poster,
             alt: titles[i].Title
         })
+
+        //.flip-card-back
+        const posterCardBack = C(posterCardInner, 'div', 'posters__card-back');
+        const plot = C(posterCardBack, 'p', 'posters__plot', titles[i].Plot)
+        const actors = C(posterCardBack, 'p', 'posters__actors');
+        actors.innerHTML = `<b>Actors: </b><br>${titles[i].Actors}`;
+
+        const year = C(posterCardBack, 'p', 'posters__year');
+        year.innerHTML = "<b>Year:</b><br>" + titles[i].Year;
+        if (titles[i].BoxOffice !== "N/A") {
+            const boxOffice = C (posterCardBack, 'p', 'posters__box-office');
+            boxOffice.innerHTML = "<b>Revenue:</b><br>" + titles[i].BoxOffice
+        }
+        const rating = C(posterCardBack, 'p', 'posters__rating');
+        rating.innerHTML = "<b>Score:</b><br>" + titles[i].imdbRating;
+        console.log (titles[i]);
     }     
 
-    posterThings = document.querySelectorAll(".posters__poster");
-    console.log (posterThings);
-    for (let i = 0; i < posterThings.length; ++i) {
-        posterThings[i].addEventListener('mouseover', slideThePoster);
-    }
-    posterThings = document.querySelector(".posters");
-    posterThings.addEventListener("mouseleave", returnThePoster);
+    // posterThings = document.querySelectorAll(".posters__poster");
+    // console.log (posterThings);
+    // for (let i = 0; i < posterThings.length; ++i) {
+    //     posterThings[i].addEventListener('mouseover', slideThePoster);
+    // }
+    // posterThings = document.querySelector(".posters");
+    // posterThings.addEventListener("mouseleave", returnThePoster);
 
 }
 
