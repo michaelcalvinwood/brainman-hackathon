@@ -17,6 +17,89 @@ titles = JSON.parse(titlesString);
 
 let titlesPerPage = 15;
 
+/*
+{
+  "genres": [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    },
+    {
+      "id": 99,
+      "name": "Documentary"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    },
+    {
+      "id": 10751,
+      "name": "Family"
+    },
+    {
+      "id": 14,
+      "name": "Fantasy"
+    },
+    {
+      "id": 36,
+      "name": "History"
+    },
+    {
+      "id": 27,
+      "name": "Horror"
+    },
+    {
+      "id": 10402,
+      "name": "Music"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    },
+    {
+      "id": 10749,
+      "name": "Romance"
+    },
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 10770,
+      "name": "TV Movie"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    },
+    {
+      "id": 10752,
+      "name": "War"
+    },
+    {
+      "id": 37,
+      "name": "Western"
+    }
+  ]
+}
+*/
+
 const main = Q('.genres');
 let genres = [
     {
@@ -48,6 +131,21 @@ let genres = [
         name: "Science Fiction",
         id: 878,
         image: "../assets/images/science-fiction.jpg"
+    },
+    {
+        name: "Fantasy",
+        id: 14,
+        image: "../assets/images/fantasy.jpg"
+    },
+    {
+        name: "Family",
+        id: 10751,
+        image: "../assets/images/family.jpg"
+    },
+    {
+        name: "Western",
+        id: 37,
+        image: "../assets/images/western.jpg"
     },
 ]
 
@@ -130,7 +228,7 @@ function getMovieListByTitle (search) {
     .then (response => {
         console.log ('movieSearchResult', response.data.Search);
         searchResults = response.data.Search;
-        if (searchResults.length === 0) {
+        if (!searchResults || searchResults.length === 0) {
             alert ("There are no movies with that search criteria.");
             return;
         }
