@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Night Out</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="https://kit.fontawesome.com/acfebf3948.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <video autoplay muted loop class="header__video">
+            <source src="./assets/videos/film_063___4K_res_2.mp4" type="video/mp4">
+        </video>
+        <div class="header__content">
+            <h1 class="header__heading">Movie Night Out</h1>
+            <form class="header__form">
+                <div class="header__search-container">
+                    <input type="text" class="header__search" name="chosen" placeholder="please type your movie choice here...">
+                    <button type="submit" class="header__submit-btn">Search</button>
+                </div>
+            </form>
+        </div>
+    </header>
+    <main>
+        <h2 class="main__title">Genres</h2>
+        <section class="genres">
+        </section>
+        <section class="posters">
+        </section>
+    </main>    
+    <script src="/scripts/dom-library.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/animation.js"></script>
+</body>
+</html>
