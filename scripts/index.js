@@ -1,21 +1,41 @@
 /*
+e8542494
 27d27563
 "12855f1e"
 */
 const apiKey = '27d27563';
 let currentPosterHover = null;
 let posterThings;
-movies = {};
+let movies = {};
 let titles = [];
-page = 1;
-title = '';
-index = 0;
-genreId = 0;
-genreSelected = 'Horror';
+let page = 1;
+let title = '';
+let index = 0;
+let genreId = 0;
+let genreSelected = 'Horror';
 let titlesString = localStorage.getItem('titles');
 titles = JSON.parse(titlesString);
+let titlesPerPage = 5;
+let searchResults = [];
+let posterNum = 0;
 
-let titlesPerPage = 15;
+function resetGlobals () {
+    return;
+    currentPosterHover = null;
+    posterThings;
+    movies = {};
+    titles = [];
+    page = 1;
+    title = '';
+    index = 0;
+    genreId = 0;
+    genreSelected = 'Horror';
+    titlesString = localStorage.getItem('titles');
+    titles = JSON.parse(titlesString);
+    titlesPerPage = 15;
+    searchResults = [];
+    posterNum = 0;
+}
 
 /*
 {
@@ -151,6 +171,15 @@ let genres = [
 
 
 Q('.header__form').addEventListener('submit', formHandler);
+Q('.header__home-anchor').addEventListener('click', goHome);
+
+function goHome (e) {
+    e.stopPropagation();
+    Q('.posters').innerHTML = '';
+    Q('.genres').style.display = 'block';
+    Q('.main__title').innerText = 'genres';
+    resetGlobals();
+}
 
 function formHandler (e) {
     e.preventDefault();
@@ -209,7 +238,9 @@ function showMovieList () {
     })
 }
 
-searchResults = [];
+function turnOffError() {
+    Q('.header__error').classList.remove('header__error--fade-in');
+}
 
 function getMovieListByTitle (search) {
     let request = {};
@@ -229,7 +260,11 @@ function getMovieListByTitle (search) {
         console.log ('movieSearchResult', response.data.Search);
         searchResults = response.data.Search;
         if (!searchResults || searchResults.length === 0) {
-            alert ("There are no movies with that search criteria.");
+            // alert ("There are no movies with that search criteria.");
+            const headerError = Q('.header__error');
+            console.log (headerError);
+            headerError.classList.add('header__error--fade-in');
+            setInterval(turnOffError, 5000);
             return;
         }
         title = searchResults.pop().Title;
@@ -316,8 +351,6 @@ function gotTitles () {
     // localStorage.setItem('titles', JSON.stringify(titles));
     showPosters(parent);
 }
-
-posterNum = 0;
 
 function showPosters() {
     console.log(titles);

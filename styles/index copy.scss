@@ -21,90 +21,48 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     position: relative;
     display: flex;
-    height: 70vh;
-    min-height: 20rem;
+    height: 40vw;
     justify-content: center;
     align-items: center;
-    
     &__video {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
-        height: 70vh;
-        min-height: 20rem;
+        height: 40vw;
         object-fit: cover;
         z-index: -1;
 
     }
 
-    &__home-anchor {
-        position: absolute;
-        left: 1.25rem;
-        top: 1.25rem;
-        font-size: 1.5rem;
-        color: #fff;
-    }
-
     &__heading {
-        margin: 0 1rem;
-        text-align: center;
-        font-size: 2.5rem;
-        @media only screen and (min-width: 768px) { 
-            font-size: 5rem;
-        }
+        margin: 0;
+        font-size: 5rem;
     }
 
     &__search-container {
         display: flex;
-        flex-wrap: wrap;
     }
 
     &__search {
-        width: 90%;
-        box-sizing: border-box;
-        margin: 1.5rem auto 0 auto;
+        width: 38vw;
+        margin-top: 1.5rem;
         border-top-left-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-        border-bottom-right-radius: 0.5rem;
-        border: 1px solid #333;
-        padding: 0.5rem;
+        border: 1px solid #999999;
+        padding: 0.75rem;
         outline: none;
-        text-align: center;
-
-        @media only screen and (min-width: 768px) { 
-            flex: 2;
-            padding: 0.75rem;
-            width: 38vw;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            text-align: left;
-        }
+        flex: 2;
     }
 
     &__submit-btn {
-        width: 90%;
-        box-sizing: border-box;
-        border-top-left-radius: 0.5rem;
-        border-bottom-left-radius: 0.5rem;
+        margin-top: 1.5rem;
+        margin-left: -1px;
         border-top-right-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
-        border: 1px solid #333;
+        border: 1px solid #999999;
+        padding: 0.75rem 2rem;
         outline: none;
-        padding: 0.5rem 1rem;
-        margin: 0.5rem auto 0 auto;
-        background-color: #555;
-        color: #fff;
-
-        @media only screen and (min-width: 768px) { 
-            width: auto;
-            margin: 1.5rem auto 0 auto;
-            padding: 0.75rem 2rem;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            margin-left: -1px;
-        }
 
     }
 
@@ -112,28 +70,6 @@ h1, h2, h3, h4, h5, h6 {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    &__form {
-        position: relative;
-    }
-
-    &__error {
-        position: absolute;
-        bottom: -7rem;
-        width: 60%;
-        margin-left: 10%;
-        background-color: white;
-        color: black;
-        padding: 1rem;
-        box-sizing: border-box;
-        border-radius: .5rem;
-        opacity: 0;
-        transition: all .4s;
-
-        &--fade-in {
-            opacity: 1;
-        }
     }
 }
 .main {
@@ -258,47 +194,3 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
-.flip-card {
-    background-color: transparent;
-    width: 300px;
-    height: 200px;
-    border: 1px solid #f1f1f1;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  }
-  
-  /* This container is needed to position the front and back side */
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-  }
-  
-  /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    background-color: #bbb;
-    color: black;
-  }
-  
-  /* Style the back side */
-  .flip-card-back {
-    background-color: dodgerblue;
-    color: white;
-    transform: rotateY(180deg);
-  }
